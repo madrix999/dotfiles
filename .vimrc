@@ -6,13 +6,12 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+" Open files and stuff? 
+" Plugin 'wincent/command-t'
+"Plugin 'kien/ctrlp.vim'
+
 " Git wrapper (gotta figure it out)
 Plugin 'tpope/vim-fugitive'
-"
-Plugin 'wincent/command-t'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'kien/ctrlp.vim'
-
 " CTRL+N to open filetree
 Plugin 'scrooloose/nerdtree'
 " Syntax stuff?
