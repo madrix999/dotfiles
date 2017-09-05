@@ -6,14 +6,23 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
+" Git wrapper (gotta figure it out)
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
+"
+Plugin 'wincent/command-t'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
+
+" CTRL+N to open filetree
 Plugin 'scrooloose/nerdtree'
+" Syntax stuff?
 Plugin 'vim-syntastic/syntastic'
+" Nice looking bottom bar
 Plugin 'vim-airline/vim-airline'
+" Better syntax highlighting
 Plugin 'justinmk/vim-syntax-extra'
+" Toggle between header and source
+Plugin 'ericcurtin/CurtineIncSw.vim'
 
 " Themes
 Plugin 'marciomazza/vim-brogrammer-theme'
@@ -37,11 +46,17 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " Plugins stuff
+
+" Nerdtree
 map <C-n> :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Switch between hader and source file
+au FileType c nmap <C-y>h :call CurtineIncSw()<CR>
+
+" 
 
 " Settings
 colorscheme eldar
