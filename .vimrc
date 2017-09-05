@@ -6,7 +6,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-" Open files and stuff? 
+" Open files and stuff?
 " Plugin 'wincent/command-t'
 "Plugin 'kien/ctrlp.vim'
 
@@ -23,11 +23,17 @@ Plugin 'justinmk/vim-syntax-extra'
 " Toggle between header and source
 Plugin 'ericcurtin/CurtineIncSw.vim'
 
+" C vim stuff
+" Plugin 'c.vim' " learn later
+
+
 " Themes
 Plugin 'marciomazza/vim-brogrammer-theme'
 Plugin 'ayu-theme/ayu-vim'
 Plugin 'agude/vim-eldar'
 Plugin 'broduo/broduo-color-scheme'
+Plugin 'chriskempson/base16-vim' " to learn how to use
+Plugin 'morhetz/gruvbox' " to learn how to use
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,7 +61,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Switch between hader and source file
 au FileType c nmap <C-y>h :call CurtineIncSw()<CR>
 
-" 
+"
 
 " Settings
 colorscheme eldar
