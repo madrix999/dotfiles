@@ -15,13 +15,20 @@ Plugin 'tpope/vim-fugitive'
 " CTRL+N to open filetree
 Plugin 'scrooloose/nerdtree'
 " Syntax stuff?
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 " Nice looking bottom bar
 Plugin 'vim-airline/vim-airline'
 " Better syntax highlighting
 Plugin 'justinmk/vim-syntax-extra'
 " Toggle between header and source
 Plugin 'ericcurtin/CurtineIncSw.vim'
+" Extend split to longest line using <leader>m
+Plugin 'blarghmatey/split-expander'
+" i3 config syntax highlighting
+Plugin 'mboughaba/i3config.vim'
+" Colors
+Plugin 'ap/vim-css-color'
+
 
 " C vim stuff
 " Plugin 'c.vim' " learn later
@@ -61,14 +68,24 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Switch between hader and source file
 au FileType c nmap <C-y>h :call CurtineIncSw()<CR>
 
-"
+" Map controls
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+let mapleader = "/"
+map <F5> :call CurtineIncSw()<CR>
 
 " Settings
-colorscheme eldar
-set t_Co=256
+colorscheme brogrammer
 syntax on
 set autoindent
 set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set number
+set splitbelow
+set splitright
