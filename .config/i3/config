@@ -1,20 +1,39 @@
+
+set_from_resource	  $color15_i3wmthemer	    color15
+set_from_resource	  $color14_i3wmthemer	    color14
+set_from_resource	  $color13_i3wmthemer	    color13
+set_from_resource	  $color12_i3wmthemer	    color12
+set_from_resource	  $color11_i3wmthemer	    color11
+set_from_resource	  $color10_i3wmthemer	    color10
+set_from_resource	  $color09_i3wmthemer		  color9
+set_from_resource	  $color08_i3wmthemer		  color8
+set_from_resource	  $color07_i3wmthemer		  color7
+set_from_resource 	$color06_i3wmthemer		  color6
+set_from_resource 	$color05_i3wmthemer 	    color5
+set_from_resource 	$color04_i3wmthemer 	    color4
+set_from_resource 	$color03_i3wmthemer 	    color3
+set_from_resource 	$color02_i3wmthemer 	    color2
+set_from_resource 	$color01_i3wmthemer 	    color1
+set_from_resource	  $color00_i3wmthemer		  color0
+set_from_resource	  $foreground_i3wmthemer	foreground
+set_from_resource	  $background_i3wmthemer	background
+
 # vim: filetype=i3
 
 ###---Basic Definitions---###
 #Needed for i3-gaps
+exec --no-startup-id ~/.config/i3/lock.sh
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0 
-gaps inner 15 
+gaps inner 0 
 gaps outer 0
 font pango:hack 9
 set $mod Mod4
-set $term urxvt
+set $term termite
 set $video --no-startup-id bash ~/.config/Scripts/video.sh
 set $stoprec --no-startup-id killall ffmpeg & killall screenkey
 set $flash --no-startup-id bash ~/.config/Scripts/flash_win.sh
 set $browser firefox-beta
-
-exec xset r rate 200 30
 
 ###---Starting External Scripts---###
 #Music player daemon:
@@ -26,20 +45,20 @@ exec --no-startup-id nm-applet
 #Mount other drives:
 exec --no-startup-id sudo mount -a
 #Composite manager:
-exec --no-startup-id compton
+#exec --no-startup-id compton
 #Refresh bash/ranger shortcuts:
-exec --no-startup-id python ~/.config/Scripts/shortcuts.py
+#exec --no-startup-id python ~/.config/Scripts/shortcuts.py
 #Try to load VGA screen if available:
-exec --no-startup-id ~/.config/Scripts/screen.sh v
+#exec --no-startup-id ~/.config/Scripts/screen.sh v
 #Launch Polybar where appropriate:
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
 #Add wallpaper:
-exec --no-startup-id feh --bg-scale ~/.config/wall.png
+#exec --no-startup-id feh --bg-scale ~/.config/wall.png
 #Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 # exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 #Remap Menu button to Super:
-exec_always --no-startup-id xmodmap -e 'keycode 135 = Super_R'
-bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
+#exec_always --no-startup-id xmodmap -e 'keycode 135 = Super_R'
+#bindsym Menu	exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 #Unclutter makes the mouse invisible after a brief period
 exec --no-startup-id unclutter
 #Disables touchpad; you might like like this one! (I only use the ThinkPad trackpoint).
@@ -103,7 +122,7 @@ bindsym $mod+Shift+q		kill
 bindsym $mod+w			exec --no-startup-id firefox-beta
 bindsym $mod+Shift+w		exec --no-startup-id chromium
 
-bindsym $mod+e			exec --no-startup-id vim
+bindsym $mod+e			exec --no-startup-id rofi -show window
 #bindsym $mod+Shift+e
 
 bindsym $mod+r 			exec $music
@@ -127,13 +146,14 @@ bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
 bindsym $mod+p			exec $pause
 #bindsym $mod+Shift+p		
 
-bindsym $mod+a			dmenu_run	
+#bindsym $mod+a				
 bindsym $mod+Shift+a		exec $term -e alsamixer
 
 bindsym $mod+s			gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5
 
-bindsym $mod+d			exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d			exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d			exec rofi -show drun
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 bindsym $mod+f			fullscreen toggle
@@ -158,6 +178,7 @@ bindsym $mod+z			gaps outer current plus 5
 bindsym $mod+Shift+z		gaps outer current minus 5
 
 bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
+#bindsym $mod+x			exec --no-startup-id i3lock
 #bindsym $mod+Shift+x
 
 bindsym $mod+c			exec $term -e weechat
@@ -170,7 +191,7 @@ bindsym $mod+c			exec $term -e weechat
 #bindsym $mod+Shift+b
 
 #bindsym $mod+n			exec $next
-#bindsym $mod+Shift+n
+bindsym $mod+Shift+n	exec nm-connection-manager
 
 ###---Workspace Bindings---###
 bindsym $mod+Home		workspace $ws1
@@ -237,13 +258,6 @@ for_window [window_role="gimp-toolbox"] floating disable; move right; resize gro
 #for_window [class="st"] exec --no-startup-id transset -a --dec .25
 for_window [window_role="GtkFileChooserDialog"] resize shrink height 10 px
 
-workspace $ws6 gaps inner 0
-workspace $ws6 gaps outer 0
-workspace $ws5 gaps inner 0
-workspace $ws5 gaps outer 0
-workspace $ws8 gaps inner 0
-workspace $ws8 gaps outer 0
-
 
 ###---Function Buttons---###
 #bindsym F1		nop
@@ -304,27 +318,7 @@ bindsym XF86AudioMute		exec $mute
 bindsym XF86AudioLowerVolume	exec $dec
 bindsym XF86AudioRaiseVolume	exec $inc
 bindsym XF86PowerOff		exec sudo shutdown -h now
-#bindsym XF86Copy		exec 
-#bindsym XF86Open		exec 
-#bindsym XF86Paste		exec 
-#bindsym XF86Cut		exec 
-#bindsym XF86MenuKB		exec 
-#bindsym XF86Calculator		exec $term -e R -q
 bindsym XF86Sleep		exec sudo zzz
-#bindsym XF86WakeUp		exec 
-#bindsym XF86Explorer		exec $term -e ranger
-#bindsym XF86Send		exec 
-#bindsym XF86Xfer		exec 
-#bindsym XF86WWW			exec --no-startup-id $browser
-#bindsym XF86DOS		exec 
-#bindsym XF86ScreenSaver		exec exec --no-startup-id ~/.config/i3/lock.sh
-#bindsym XF86RotateWindows	exec 
-#bindsym XF86TaskPane		exec 
-#bindsym XF86Favorites		exec 
-#bindsym XF86MyComputer		exec $term -e ranger
-#bindsym XF86Back		exec 
-#bindsym XF86Forward		exec 
-#bindsym XF86Eject		exec sudo umount -R /mnt
 bindsym XF86AudioNext		exec $next
 bindsym XF86AudioPlay		exec $pause
 bindsym XF86AudioPrev		exec $prev
@@ -332,48 +326,14 @@ bindsym XF86AudioStop		exec $pause
 bindsym XF86AudioRecord		exec $audio
 bindsym XF86AudioRewind		exec $lilbak
 bindsym XF86AudioForward	exec $lilfor
-#bindsym XF86Phone		exec 
-#bindsym XF86Tools		exec 
-#bindsym XF86HomePage		exec 
-#bindsym XF86Reload		restart
-#bindsym XF86ScrollUp		exec 
-#bindsym XF86ScrollDown		exec 
-#bindsym XF86New		exec 
-#bindsym XF86LaunchA		exec
-#bindsym XF86LaunchB		exec 
-#bindsym XF86Launch2		exec 
-#bindsym XF86Launch3		exec 
-#bindsym XF86Launch4		exec 
-#bindsym XF86Launch5		exec 
-#bindsym XF86Launch6		exec 
-#bindsym XF86Launch7		exec 
-#bindsym XF86Launch8		exec 
-#bindsym XF86Launch9		exec 
 bindsym XF86AudioMicMute	exec $micmute
 #bindsym XF86TouchpadToggle	exec 
 #bindsym XF86TouchpadOn		exec --no-startup-id exec synclient TouchpadOff=0
 #bindsym XF86TouchpadOff		exec --no-startup-id exec synclient TouchpadOff=1
-#bindsym XF86Suspend		exec --no-startup-id ~/.config/i3/lock.sh
-#bindsym XF86Close		kill
 bindsym XF86WebCam		exec mpv /dev/video0
-#bindsym XF86Mail		exec $term -e mutt
-#bindsym XF86Messenger		exec $term -e weechat
-#bindsym XF86Search		exec $browser https://duckduckgo.com
-#bindsym XF86Go			exec 
-#bindsym XF86Finance		exec 
-#bindsym XF86Game		exec 
-#bindsym XF86Shop		exec $browser https://ebay.com
 bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 10
-#bindsym XF86AudioMedia		exec $music
 bindsym XF86Display		exec --no-startup-id arandr
-#bindsym XF86KbdLightOnOff	exec 
 #bindsym XF86KbdBrightnessDown	exec --no-startup-id xbacklight -dec 10
 #bindsym XF86KbdBrightnessUp	exec --no-startup-id xbacklight -inc 10
-#bindsym XF86Reply		exec 
-#bindsym XF86MailForward	exec 
-#bindsym XF86Save		exec 
-#bindsym XF86Documents		exec $term -e ranger ~/Documents
-#bindsym XF86Battery		exec 
-#bindsym XF86Bluetooth		exec 
 bindsym XF86WLAN		exec --no-startup-id sudo sv restart NetworkManager
