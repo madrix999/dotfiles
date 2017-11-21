@@ -2,12 +2,13 @@
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
-mouse_autohide = true
+mouse_autohide = false
 allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Monospace 9
+#font = Monospace 10
+font = Liberation Mono 10
 scrollback_lines = 10000
 search_wrap = true
 #icon_name = terminal
@@ -17,10 +18,10 @@ search_wrap = true
 cursor_blink = system
 
 # "block", "underline" or "ibeam"
-cursor_shape = underline
+cursor_shape = block
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-#browser = xdg-open
+browser = firefox-beta
 
 # set size hints for the window
 #size_hints = false
@@ -32,45 +33,41 @@ filter_unmatched_urls = true
 #modify_other_keys = false
 
 [colors]
-#cursor = #dcdccc
-#cursor_foreground = #dcdccc
-foreground = #dcdccc
-foreground_bold = #ffffff
-background = #1a1a1a
 
-# 20% background transparency (requires a compositor)
-#background = rgba(63, 63, 63, 0.8)
+# special
+foreground      = #b5d8d6
+foreground_bold = #b5d8d6
+cursor          = #811414
+background      = #080c0b
 
-# if unset, will reverse foreground and background
-highlight = #2f2f2f
+# black
+color0  = #0f1414
+color8  = #81deda
 
-# colors from color0 to color254 can be set
-color0 = #2e3436
-color1 = #a40000
-color2 = #4e9a06
-color3 = #c4a000
-color4 = #3465a4
-color5 = #75507b
-color6 = #ce5c00
-color7 = #babdb9
-color8 = #555753
-color9 = #ef2929
-color10 = #8ae234
-color11 = #fce94f
-color12 = #729fcf
-color13 = #ad7fa8
-color14 = #fcaf3e
-color15 = #eeeeec
+# red
+color1  = #32726e
+color9  = #6eb5b1
 
-[hints]
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+# green
+color2  = #517150
+color10 = #8dc38b
 
-# vim: ft=dosini cms=#%s
+# yellow
+color3  = #3b4847
+color11 = #dbbe72
+
+# blue
+color4  = #556766
+color12 = #e59199
+
+# magenta
+color5  = #758d8b
+color13 = #90b3e4
+
+# cyan color6=9ab8b6
+color6  = #d5fffc
+color14 = #e7bcbf
+
+# white
+color7  = #c4eae8
+color15 = #a4e0a2

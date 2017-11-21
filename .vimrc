@@ -4,6 +4,8 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+let base16colorspace=256
+
 Plugin 'VundleVim/Vundle.vim'
 
 " Open files and stuff?
@@ -18,6 +20,7 @@ Plugin 'scrooloose/nerdtree'
 " Plugin 'vim-syntastic/syntastic'
 " Nice looking bottom bar
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Better syntax highlighting
 Plugin 'justinmk/vim-syntax-extra'
 " Toggle between header and source
@@ -28,7 +31,8 @@ Plugin 'blarghmatey/split-expander'
 Plugin 'mboughaba/i3config.vim'
 " Colors
 Plugin 'ap/vim-css-color'
-
+" Compile and run single file C program
+Plugin 'gccsingle.vim'
 
 " C vim stuff
 " Plugin 'c.vim' " learn later
@@ -36,11 +40,12 @@ Plugin 'ap/vim-css-color'
 
 " Themes
 Plugin 'marciomazza/vim-brogrammer-theme'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'agude/vim-eldar'
-Plugin 'broduo/broduo-color-scheme'
+"Plugin 'ayu-theme/ayu-vim'
+"Plugin 'agude/vim-eldar'
+"Plugin 'broduo/broduo-color-scheme'
 Plugin 'chriskempson/base16-vim' " to learn how to use
-Plugin 'morhetz/gruvbox' " to learn how to use
+"Plugin 'morhetz/gruvbox' " to learn how to use
+Plugin 'vim-scripts/dante.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,12 +85,14 @@ let mapleader = "/"
 map <F5> :call CurtineIncSw()<CR>
 
 " Settings
-colorscheme brogrammer
+colorscheme default
+let g:airline_theme='term'
 syntax on
 set autoindent
 set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set number
+"set relativenumber
 set splitbelow
 set splitright

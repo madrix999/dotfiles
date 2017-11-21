@@ -22,7 +22,6 @@ set_from_resource	  $background_i3wmthemer	background
 
 ###---Basic Definitions---###
 #Needed for i3-gaps
-exec --no-startup-id ~/.config/i3/lock.sh
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0 
 gaps inner 0 
@@ -51,9 +50,9 @@ exec --no-startup-id sudo mount -a
 #Try to load VGA screen if available:
 #exec --no-startup-id ~/.config/Scripts/screen.sh v
 #Launch Polybar where appropriate:
-#exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 #Add wallpaper:
-#exec --no-startup-id feh --bg-scale ~/.config/wall.png
+exec --no-startup-id feh --bg-scale ~/.config/wall.png
 #Remaps the caps lock button to escape and uses the US international keyboard with dead keys
 # exec_always --no-startup-id setxkbmap -layout us -variant altgr-intl -option caps:escape
 #Remap Menu button to Super:
@@ -63,6 +62,8 @@ exec --no-startup-id sudo mount -a
 exec --no-startup-id unclutter
 #Disables touchpad; you might like like this one! (I only use the ThinkPad trackpoint).
 exec --no-startup-id synclient TouchpadOff=1
+#Lock screen at launch
+exec --no-startup-id ~/.config/i3/lock.sh
 
 ##For cmus:
 set $music urxvt -e cmus
@@ -122,7 +123,7 @@ bindsym $mod+Shift+q		kill
 bindsym $mod+w			exec --no-startup-id firefox-beta
 bindsym $mod+Shift+w		exec --no-startup-id chromium
 
-bindsym $mod+e			exec --no-startup-id rofi -show window
+bindsym $mod+e			exec --no-startup-id dmenu-run
 #bindsym $mod+Shift+e
 
 bindsym $mod+r 			exec $music
@@ -132,16 +133,16 @@ bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 
 #bindsym $mod+y 
-bindsym $mod+Shift+y		resize shrink width 10 px or 10ppt
+bindsym $mod+Shift+y		resize shrink width 5 px or 5 ppt
 
 #bindsym $mod+u
-bindsym $mod+Shift+u		resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+u		resize shrink height 5 px or 5 ppt
 
 bindsym $mod+i 			exec $term -e htop
-bindsym $mod+Shift+i		resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+i		resize grow height 5 px or 5 ppt
 
 bindsym $mod+o			exec --no-startup-id $beg
-bindsym $mod+Shift+o		resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+o		resize grow width 5 px or 5 ppt
 
 bindsym $mod+p			exec $pause
 #bindsym $mod+Shift+p		
@@ -152,8 +153,8 @@ bindsym $mod+Shift+a		exec $term -e alsamixer
 bindsym $mod+s			gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5
 
-#bindsym $mod+d			exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d			exec rofi -show drun
+bindsym $mod+d			exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d			exec rofi -show drun
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 bindsym $mod+f			fullscreen toggle
