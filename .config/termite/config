@@ -7,7 +7,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-#font = Monospace 10
+#font = Hack 10
 font = Liberation Mono 10
 scrollback_lines = 10000
 search_wrap = true
@@ -21,7 +21,7 @@ cursor_blink = system
 cursor_shape = block
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
-browser = firefox-beta
+browser = qutebrowser
 
 # set size hints for the window
 #size_hints = false
@@ -39,6 +39,7 @@ foreground      = #b5d8d6
 foreground_bold = #b5d8d6
 cursor          = #811414
 background      = #080c0b
+#background = rgba(63, 63, 63, 0)
 
 # black
 color0  = #0f1414

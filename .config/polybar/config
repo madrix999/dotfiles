@@ -11,9 +11,10 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #080c0b
-background-alt = #444
+background-alt = #32726e
 ;foreground = ${xrdb:color7:#222}
 foreground = #b5d8d6
+;b5d8d6
 foreground-alt = #811414
 primary = #b5d8d6
 secondary = #b5d8d6
@@ -368,21 +369,15 @@ format-charging-underline = #ffb52a
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix = "☰ "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-#ramp-capacity-0 = 
-#ramp-capacity-1 = 
-#ramp-capacity-2 = 
 ramp-capacity-0 = ☳
 ramp-capacity-1 = ☱
 ramp-capacity-2 = ☰
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-#animation-charging-0 = 
-#animation-charging-1 = 
-#animation-charging-2 = 
 animation-charging-0 = ☳
 animation-charging-1 = ☱
 animation-charging-2 = ☰
@@ -416,7 +411,7 @@ format-spacing = 1
 
 label-open = ☰
 label-open-foreground = ${colors.secondary}
-label-close = ☰ cancel
+label-close = ☰ 
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
